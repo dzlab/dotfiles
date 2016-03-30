@@ -45,6 +45,12 @@ Plug 'bling/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 " git branch in status bar
 Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
+
+" better buffer management
+Plug 'jeetsukumaran/vim-buffergator'
+Plug 'ctrlpvim/ctrlp.vim'
+
 " line numbers
 Plug 'myusuf3/numbers.vim'
 
@@ -54,6 +60,8 @@ Plug 'ervandew/supertab'
 " Syntax checking "
 Plug 'scrooloose/syntastic'
 
+" File search
+Plug 'rking/ag.vim'
 " Add plugins to &runtimepath
 call plug#end()
 
@@ -63,6 +71,11 @@ set laststatus=2
 set statusline+=%F
 let g:airline_powerline_fonts = 1
 
+" Enable the list of buffers
+let g:airline#extensions#tabline#enabled = 1
+" Show just the filename
+let g:airline#extensions#tabline#fnamemod = ':t'
+
 " color scheme
 let g:molokai_original = 1
 colorscheme molokai
@@ -70,6 +83,9 @@ colorscheme molokai
 "set background=light
 "let g:solarized_termcolors = 256
 "colorscheme solarized
+
+" file search start from project root directory
+let g:ag_working_path_mode="r"
 
 set number
 " enable 256 colors
