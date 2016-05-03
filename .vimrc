@@ -62,6 +62,8 @@ Plug 'scrooloose/syntastic'
 
 " File search
 Plug 'rking/ag.vim'
+" History (deletes/changes) management
+Plug 'mbbill/undotree'
 " Add plugins to &runtimepath
 call plug#end()
 
@@ -86,6 +88,9 @@ colorscheme molokai
 
 " file search start from project root directory
 let g:ag_working_path_mode="r"
+
+" Tell CtrlP to ignore files in folder
+let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git\|target'
 
 set number
 " enable 256 colors
