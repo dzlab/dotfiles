@@ -27,13 +27,15 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': 'yes \| ./install' }
 " Unmanaged plugin (manually installed and updated)
 Plug '~/my-prototype-plugin'
 
+" File auto formatting
+Plug 'Chiel92/vim-autoformat'
+
 " Scala highlight
 Plug 'derekwyatt/vim-scala' 
 " Go highlight
 Plug 'fatih/vim-go'
 " Javascript
 Plug 'pangloss/vim-javascript'
-
 " JSON support
 Plug 'elzr/vim-json'
 
@@ -43,6 +45,9 @@ Plug 'flazz/vim-colorschemes'
 " status bar
 Plug 'bling/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+" font
+Plug 'ryanoasis/vim-devicons'
+
 " git branch in status bar
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
@@ -64,6 +69,10 @@ Plug 'scrooloose/syntastic'
 Plug 'rking/ag.vim'
 " History (deletes/changes) management
 Plug 'mbbill/undotree'
+
+" Dispatch commands in the background
+Plug 'tpope/vim-dispatch'
+
 " Add plugins to &runtimepath
 call plug#end()
 
@@ -72,6 +81,9 @@ set encoding=utf-8
 set laststatus=2
 set statusline+=%F
 let g:airline_powerline_fonts = 1
+
+set guifont=Droid\ Sans\ Mono\ for\ Powerline\ Plus\ Nerd\ File\ Types:h11
+"set guifont=DroidSansMonoPLNerd:h12
 
 " Enable the list of buffers
 let g:airline#extensions#tabline#enabled = 1
@@ -90,7 +102,7 @@ colorscheme molokai
 let g:ag_working_path_mode="r"
 
 " Tell CtrlP to ignore files in folder
-let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git\|target'
+let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|\.git\|target'
 
 set number
 " enable 256 colors
@@ -114,8 +126,16 @@ let g:syntastic_javascript_checkers = ['standard']
 " autocmd bufwritepost *.js silent !standard % --format
 " set autoread
 
+" Enable copy to clipboard in visual mode
+set clipboard^=autoselect
+
 " mapping for vim-go
 au FileType go nmap <leader>r <Plug>(go-run)
 au FileType go nmap <leader>b <Plug>(go-build)
 au FileType go nmap <leader>t <Plug>(go-test)
 au FileType go nmap <leader>c <Plug>(go-coverage)
+
+"augroup autoindent
+"    au!
+"    autocmd BufWritePre * :normal migg=G`i
+"augroup End
