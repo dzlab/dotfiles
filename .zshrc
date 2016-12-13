@@ -1,10 +1,15 @@
 # Path to your oh-my-zsh installation.
 export ZSH=/Users/bachir/.oh-my-zsh
 
+# include a files
+source ${HOME}/.envs
+source ${HOME}/.aliases
+
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
+#ZSH_THEME="robbyrussell"
 ZSH_THEME="powerlevel9k/powerlevel9k"
 
 # custom prompt segments for Power Level 9000 theme
@@ -59,7 +64,7 @@ export DEFAULT_USER="$USER"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(aws docker git sbt)
 
 # User configuration
 
@@ -120,9 +125,14 @@ setjdk 1.8
 #fi
 
 # go
-export GOROOT=/usr/local/go
+export GOROOT=/usr/local/opt/go/libexec
 export GOPATH=$HOME/Workspace/GO
 export GOBIN=$GOPATH/bin
 export PATH=$PATH:$GOROOT/bin:$GOBIN
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+
+# added by travis gem
+[ -f /Users/bachir/.travis/travis.sh ] && source /Users/bachir/.travis/travis.sh
